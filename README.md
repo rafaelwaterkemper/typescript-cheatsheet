@@ -53,7 +53,7 @@ a specific type:
 
 Type Narrowing
 --
-When we define a super type can be onw of two types,
+When we define a super type can be one of the two types,
 we can use instanceOf to infer which type should be matched.
     
     type Square = {
@@ -91,7 +91,7 @@ in keyword to infer the type
 
 Discriminated Unions
 --
-Used to discriminate which type for a union type using a literal property when they have the same properties;
+Used to discriminate which type for a Union Type using a literal property when they have the same properties;
         type Square = {
             kind: 'square';
             size: number;
@@ -445,8 +445,21 @@ Turn all properties readonly. The value can just be set on instanciation;
 
 Record<Keys, Type>
 --
-Define a structure for a type, where the key should respect the type used as "Keys" and the data should respect the type used for "Type".
+Define a structure for a type, where the keys should respect the type used as "Keys" and the property values should respect the type used for "Type".
 
+    interface CatInfo {
+        age: number;
+        breed: string;
+    }
+    
+    type CatName = "miffy" | "boris" | "mordred";
+    
+    const cats: Record<CatName, CatInfo> = {
+    miffy: { age: 10, breed: "Persian" },
+    boris: { age: 5, breed: "Maine Coon" },
+    mordred: { age: 16, breed: "British Shorthair" },
+    };
+    
 undefined vs optional
 --
 When we define an element as optional, it shouldn't be specified in the object, but if we define a property with (string | undefined) the property must be specified either as "string" or undefined.
